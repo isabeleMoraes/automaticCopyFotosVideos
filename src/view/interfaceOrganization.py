@@ -4,7 +4,7 @@ file = Path(__file__).resolve()
 parent, root = file.parent, file.parents[1]
 sys.path.append(str(root))
 
-from service.backupService import processCopy
+from service.organizationService import processCopy
 from tkinter import *
 from tkinter import filedialog 
 
@@ -43,7 +43,7 @@ class Application:
         self.botaoExplorarOrigem["text"] = "buscar"
         self.botaoExplorarOrigem["font"] = ("Calibri", "10")
         self.botaoExplorarOrigem["width"] = 12
-        self.botaoExplorarOrigem["command"] = self.browseFiles
+        self.botaoExplorarOrigem["command"] = self.browseFilesOrigem
         self.botaoExplorarOrigem.pack(side=LEFT)
 
         self.destinoLabel = Label(self.terceiroContainer, text="Destino", font=self.fontePadrao)
@@ -58,7 +58,7 @@ class Application:
         self.botaoExplorarDestino["text"] = "buscar"
         self.botaoExplorarDestino["font"] = ("Calibri", "10")
         self.botaoExplorarDestino["width"] = 12
-        self.botaoExplorarDestino["command"] = self.browseFiles
+        self.botaoExplorarDestino["command"] = self.browseFilesDestino
         self.botaoExplorarDestino.pack(side=LEFT)
 
         self.botaoCopiar = Button(self.quartoContainer)
@@ -82,23 +82,18 @@ class Application:
             processCopy(origem, destino)
             self.mensagem["text"] = "Feito!"
 
-    def browseFiles(self): 
-        self.origem = filedialog.askopenfilename(initialdir = "/", 
-                                          title = "Select a File", 
-                                          filetypes = (("Text files", 
-                                                        "*.txt*"), 
-                                                       ("all files", 
-                                                        "*.*")))
+    def browseFilesOrigem(self): 
+        path = filedialog.askdirectory(initialdir = "/", 
+                                          title = "Select a DIRECTORY",
+                                         mustexist= TRUE)
+        self.origem.insert(0, path)
+    
+    def browseFilesDestino(self): 
+        path = filedialog.askdirectory(initialdir = "/", 
+                                          title = "Select a DIRECTORY",
+                                         mustexist= TRUE)
+        self.destino.insert(0, path)
        
-                                                                                                
-window = Tk() 
-   
-window.title('File Explorer') 
-   
-window.geometry("500x500") 
-   
-window.config(background = "white") 
-
 
 root = Tk()
 root.title("Backup de fotos - Created By Isabele Moraes")
