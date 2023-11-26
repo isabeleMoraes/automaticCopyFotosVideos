@@ -8,3 +8,6 @@ from utils.imageUtils import *
 
 def findImages(pathOrigin, pathDestination):
     print (imagensIguais(pathOrigin, pathDestination))
+
+# Receber apenas um caminho
+## Identificar foto da raiz

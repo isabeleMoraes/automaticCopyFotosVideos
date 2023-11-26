@@ -4,10 +4,10 @@ import os
 def copyFolder(src, destination):
     if not existsFolder(destination):
         shutil.copytree(src, destination)
-        print("Pasta copiada")
+        print(f"PASTA COPIADA")
         return True
     else:
-        print(f'A pasta "{src}" ja existe no destino')
+        print(f'A pasta JA EXISTE no destino')
         return False
 
 def isFolder(path):
@@ -16,8 +16,9 @@ def isFolder(path):
 def createFolder(folderToCreate):
     if not existsFolder(folderToCreate):
         os.mkdir(folderToCreate)
+        print('Pasta criada')
     else:
-        print('A pasta ja existe')
+        print(f'A pasta JA EXISTE')
         
     return folderToCreate
 

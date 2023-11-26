@@ -24,8 +24,8 @@ def getYearOfName(name):
 def copyFile(src, destination):
     if not os.path.exists(destination):
         shutil.copy2(src, destination)
-        print("Arquivo copiado")
+        print("ARQUIVO COPIADO")
         return True
     else:
-        print(f'O arquivo "{src}" ja existe no destino')
+        print(f'[JA EXISTE] O arquivo "{src}" no destino')
         return False
