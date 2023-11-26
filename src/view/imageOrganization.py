@@ -4,7 +4,8 @@ file = Path(__file__).resolve()
 parent, root = file.parent, file.parents[1]
 sys.path.append(str(root))
 
-from service.backupService import processCopy
+#from service.organizationService import processCopy
+from service.organizationServiceV2 import processCopy
 
 def main():
 
